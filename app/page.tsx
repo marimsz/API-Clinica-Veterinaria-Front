@@ -1,69 +1,202 @@
+'use client';
+
 import Image from "next/image";
+import Link from "next/link";
+
+import { 
+   PawPrint,
+  Plus,
+  Hospital,
+  UserRound,
+  Stethoscope,
+  ArrowRight,
+} from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <main className="min-h-screen bg-gray-100">
+
+      <header className="relative flex h-64 items-start justify-between bg-teal-700 px-10 py-10 text-white">
+         
+         <div className="relative z-10 flex translate-y-8 items-center gap-4">
+
+         <div className="relative flex h-16 w-16 shrink-0 items-center justify-center">
+          <PawPrint
+            size={64}
+            strokeWidth={2.5}
+            className="text-white"
+          />
+
+          <Plus
+          size={22}
+          strokeWidth={4}
+          className="absolute text-white"
+          />
+         </div>
+
+          {/* Titulo */}
+          <div className="flex flex-col items-start">
+          <h1 className="text-4xl font-bold">
+            Clínica Veterinária
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="mt-3 text-xl">
+             Sistema de gerenciamento veterinário
           </p>
+          </div>
+          </div>
+
+          
+         <div className="absolute inset-0 overflow-hidden pointer-events-none">
+
+        {/* Perto do título */}
+         <span className="absolute left-[3%] top-6 rotate-[-20deg] text-5xl opacity-30">
+         🐾
+         </span>
+
+         <span className="absolute left-[22%] top-28 rotate-12 text-4xl opacity-25">
+         🐾
+         </span>
+
+         <span className="absolute left-[35%] top-10 rotate-[-15deg] text-6xl opacity-30">
+         🐾
+         </span>
+
+         <span className="absolute left-[40%] top-40 rotate-12 text-4xl opacity-25">
+         🐾
+         </span>
+
+         {/* Meio do cabeçalho */}
+         <span className="absolute left-[52%] top-20 rotate-[-25deg] text-5xl opacity-30">
+         🐾
+         </span>
+
+         <span className="absolute left-[62%] top-40 rotate-12 text-6xl opacity-25">
+          🐾
+         </span>
+
+         <span className="absolute left-[72%] top-12 rotate-[-15deg] text-4xl opacity-30">
+          🐾
+         </span>
+
+        {/* Próximo do gatinho */}
+         <span className="absolute right-[20%] top-36 rotate-12 text-5xl opacity-25">
+          🐾
+         </span>
+
+         <span className="absolute right-[5%] top-8 rotate-[-20deg] text-6xl opacity-30">
+          🐾
+         </span>
+
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+          <div className="absolute bottom-[-35px] right-10 z-20">
+           <Image
+            src="/gato.png"
+            alt="Gato"
+            width={280}
+            height={300}
+            priority
+          />
+         </div>
+      </header>
+
+      <section className="mx-auto max-w-5xl p-8">
+        <h2 className="mb-6 text-2xl font-semibold text-gray-800">
+          Bem-vindo ao sistema!
+        </h2>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+
+      {/* Clínicas */}
+      <a
+       href="/clinicas"
+       className="rounded-xl bg-white p-6 shadow transition hover:-translate-y-1 hover:shadow-lg"
+      >
+      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-teal-100">
+       <Hospital size={34} className="text-teal-700" />
+      </div>
+
+      <h3 className="text-xl font-bold text-teal-700">
+        Clínicas
+      </h3>
+
+       <p className="mt-2 text-gray-600">
+        Gerenciar clínicas veterinárias
+       </p>
+
+      <ArrowRight className="mt-5 text-teal-700" size={24} />
+      </a>
+
+      {/* Tutores */}
+      <a
+       href="/tutores"
+       className="rounded-xl bg-white p-6 shadow transition hover:-translate-y-1 hover:shadow-lg"
+      >
+      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-100">
+        <UserRound size={34} className="text-blue-600" />
+      </div>
+
+       <h3 className="text-xl font-bold text-teal-700">
+         Tutores
+       </h3>
+
+        <p className="mt-2 text-gray-600">
+          Cadastrar e consultar tutores
+        </p>
+
+      <ArrowRight className="mt-5 text-blue-600" size={24} />
+      </a>
+
+       {/* Pacientes */}
+       <a
+        href="/pacientes"
+        className="rounded-xl bg-white p-6 shadow transition hover:-translate-y-1 hover:shadow-lg"
+        >
+      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-purple-100">
+      <PawPrint size={34} className="text-purple-600" />
+      </div>
+
+      <h3 className="text-xl font-bold text-teal-700">
+        Pacientes
+      </h3>
+
+      <p className="mt-2 text-gray-600">
+       Gerenciar animais atendidos
+      </p>
+
+      <ArrowRight className="mt-5 text-purple-600" size={24} />
+      </a>
+
+     {/* Veterinários */}
+       <a
+        href="/veterinarios"
+        className="rounded-xl bg-white p-6 shadow transition hover:-translate-y-1 hover:shadow-lg"
+      >
+      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-orange-100">
+       <Stethoscope size={34} className="text-orange-600" />
+      </div>
+
+      <h3 className="text-xl font-bold text-teal-700">
+        Veterinários
+      </h3>
+
+      <p className="mt-2 text-gray-600">
+       Gerenciar veterinários
+      </p>
+
+      <ArrowRight className="mt-5 text-orange-600" size={24} />
+     </a>
+
+     <Link
+      href="/clinicas/listar"
+      className="rounded-lg bg-teal-700 p-3 font-bold text-white hover:bg-teal-800"
+     >
+      Listar Clínicas
+     </Link>
+
+      </div>
+     </section>
+    </main>
   );
 }
