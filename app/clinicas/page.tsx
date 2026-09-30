@@ -154,7 +154,7 @@ export default function Clinicas() {
               className="w-full rounded-lg bg-teal-700 p-3 font-bold text-white transition hover:bg-teal-800"
             >
                 Cadastrar Clínica
-            </button>
+            </button> <br />
 
         </form>
 
@@ -163,6 +163,14 @@ export default function Clinicas() {
                {mensagem}
             </p>
         )}
+
+        <Link
+          href="/clinicas/listar"
+          className="rounded-lg bg-teal-700 p-3 font-bold text-white hover:bg-teal-800"
+        >
+          Listar Clínicas
+        </Link>
+
  
       </div>
 

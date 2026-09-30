@@ -1,15 +1,45 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+
+interface Tutor {
+    id: number,
+    nome: string;
+}
 
 export default function Pacientes() {
     const [nome, setNome] = useState("");
     const [especie, setEspecie] = useState("");
     const [raca, setRaca] = useState("");
     const [sexo, setSexo] = useState("");
+    const [tutorId, setTutorId] = useState("");
 
+    const [tutores, setTutores] = useState<Tutor[]>([]);
     const [mensagem, setMensagem] = useState("");
+
+     // Carregar tutores cadastrados
+    useEffect(() => {
+        async function carregarTutores() {
+            try {
+                const resposta = await fetch(
+                    "http://localhost:8080/tutores"
+                );
+
+                if (!resposta.ok) {
+                    throw new Error("Erro ao carregar tutores");
+                }
+
+                const dados = await resposta.json();
+                setTutores(dados);
+            } catch (error) {
+                console.error(error);
+                setMensagem("Não foi possível carregar os tutores.");
+            }
+        }
+
+        carregarTutores();
+    }, []);
 
     async function cadastrarPaciente(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -19,6 +49,9 @@ export default function Pacientes() {
             especie,
             raca,
             sexo,
+            tutor: {
+                id: Number(tutorId)
+            }
         };
 
         try {
@@ -27,16 +60,16 @@ export default function Pacientes() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({
-                   nome,
-                   raca,
-                   especie,
-                   sexo, 
-                }),
+                body: JSON.stringify(paciente),
             });
 
-            if (!resposta.ok) {
-                throw new Error("Erro ao cadastrar paciente");
+           if (!resposta.ok) {
+                const erro = await resposta.text();
+
+                console.error("ERRO DO BACKEND:", resposta.status, erro);
+
+                setMensagem(`Erro ${resposta.status}: ${erro}`);
+                return;
             }
 
             setMensagem("Paciente cadastrado com sucesso!");
@@ -45,6 +78,7 @@ export default function Pacientes() {
             setEspecie("");
             setRaca("");
             setSexo("");
+            setTutorId("");
 
         } catch (error) {
             console.error(error);
@@ -136,12 +170,45 @@ export default function Pacientes() {
                         />
                     </div>
 
+                     {/* Seleção do tutor */}
+                        <div>
+                            <label className="mb-2 block font-medium text-gray-700">
+                                Tutor do Paciente
+                            </label>
+
+                            <select
+                                value={tutorId}
+                                onChange={(e) => setTutorId(e.target.value)}
+                                required
+                                className="w-full rounded-lg border border-gray-300 p-3 text-gray-800 outline-none focus:border-teal-600"
+                            >
+                                <option value="">
+                                    Selecione um tutor
+                                </option>
+
+                                {tutores.map((tutor) => (
+                                    <option
+                                        key={tutor.id}
+                                        value={tutor.id}
+                                    >
+                                        {tutor.nome} - ID: {tutor.id}
+                                    </option>
+                                ))}
+                            </select>
+
+                            {tutores.length === 0 && (
+                                <p className="mt-2 text-sm text-red-600">
+                                    Nenhum tutor encontrado. Cadastre um tutor primeiro.
+                                </p>
+                            )}
+                        </div>
+
                     <button
                     type="submit"
                     className="w-full rounded-lg bg-teal-700 p-3 font-bold text-white transition hover:bg-teal-800"
                     >
                        Cadastrar Paciente
-                    </button>
+                    </button> <br />
 
                 </form>
 
@@ -150,6 +217,13 @@ export default function Pacientes() {
                         {mensagem}
                     </p>
                 )}
+
+                <Link
+                   href="/pacientes/listar"
+                   className="rounded-lg bg-teal-700 p-3 font-bold text-white hover:bg-teal-800"
+                >
+                  Gerenciar Pacientes
+                </Link>
 
              </div>
 

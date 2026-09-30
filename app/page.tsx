@@ -188,13 +188,6 @@ export default function Home() {
       <ArrowRight className="mt-5 text-orange-600" size={24} />
      </a>
 
-     <Link
-      href="/clinicas/listar"
-      className="rounded-lg bg-teal-700 p-3 font-bold text-white hover:bg-teal-800"
-     >
-      Listar Clínicas
-     </Link>
-
       </div>
      </section>
     </main>

@@ -138,9 +138,9 @@ export default function Tutor() {
                 <button
                 type="submit"
                 className="w-full rounded-lg bg-teal-700 p-3 font-bold text-white transition hover:bg-teal-800"
-                >
+                > 
                   Cadastrar Tutor
-                </button>
+                </button> <br />
 
                 </form>
 
@@ -149,6 +149,13 @@ export default function Tutor() {
                         {mensagem}
                     </p>
                 )}
+
+            <Link
+              href="/tutores/listar"
+              className="rounded-lg bg-teal-700 p-3 font-bold text-white hover:bg-teal-800"
+            >
+              Listar Tutores
+            </Link>
 
             </div>
 

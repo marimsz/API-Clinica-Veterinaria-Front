@@ -319,11 +319,11 @@ export default function ListarClinicas() {
                     <p className="py-6 text-gray-600">
                         Carregando clínicas...
                     </p>
-                ) : clinicas.length === 0 && (
+                ) : clinicas.length === 0 ? (
                    <p className="rounded-lg bg-gray-50 p-6 text-gray-600">
                         Nenhuma clínica encontrada.
                    </p> 
-                )} : (
+                ) : (
                     <div className="overflow-x-auto">
                        <table className="w-full border-collapse text-left">
                         <thead>
@@ -369,7 +369,7 @@ export default function ListarClinicas() {
                                   </td>
 
                                   <td className="p-3">
-                                    <div className="flex flex-cols gap-2">
+                                    <div className="flex flex-col gap-2">
                                         <button
                                         type="button"
                                         onClick={() => modificarClinica(clinica)}
@@ -392,7 +392,7 @@ export default function ListarClinicas() {
                         </tbody>
                        </table>
                     </div>
-                )
+                )}
 
             </div>
 

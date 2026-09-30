@@ -1,22 +1,65 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+
+interface Clinica {
+    id: number;
+    nome: string;
+}
 
 export default function Veterinarios() {
     const [nome, setNome] = useState("");
     const [telefone, setTelefone] = useState("");
     const [email, setEmail] = useState("");
 
-    const [mensagem, setMensagem] = useState("");
+    const [clinicaId, setClinicaId] = useState("");
+    const [clinicas, setClinicas] = useState<Clinica[]>([]); 
 
+    const [mensagem, setMensagem] = useState("");
+    const [carregando, setCarregando] = useState(false); 
+
+    //Buscar clínicas cadastradas
+    useEffect(() => {
+        async function buscarClínicas() {
+            try {
+                const resposta = await fetch(
+                    "http://localhost:8080/clinicas"
+                );
+
+            if (!resposta.ok) {
+                throw new Error("Erro ao buscar clínicas");
+            }
+            const dados: Clinica[] = await resposta.json();
+                setClinicas(dados);
+
+            } catch (error) {
+                console.error("Erro ao carregar clínicas:", error);
+                setMensagem(
+                    "Não foi possível carregar as clínicas cadastradas."
+                );
+            }
+        }
+
+        buscarClínicas();
+    }, []);
+
+    //Cadastrar Veterinários
     async function cadastrarVeterinario(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
+
+        if (!clinicaId) {
+           setMensagem("Selecione uma clínica.");
+           return;
+        }
 
         const veterinario = {
             nome,
             telefone,
             email,
+            clinica: {
+                id: Number(clinicaId)
+            }
         };
         try {
             const resposta = await fetch("http://localhost:8080/veterinarios", {
@@ -28,7 +71,12 @@ export default function Veterinarios() {
             });
 
             if (!resposta.ok) {
-                throw new Error("Erro ao cadastrar veterinário");
+                const detalhe = await resposta.text();
+
+                console.error("Status HTTP:", resposta.status);
+                throw new Error(
+                    `Erro HTTP ${resposta.status}: ${detalhe}`
+                );
             }
 
             setMensagem("Veterinário cadastrado com sucesso!");
@@ -36,15 +84,20 @@ export default function Veterinarios() {
             setNome("");
             setTelefone("");
             setEmail("");
+            setClinicaId("");
 
         } catch (error) {
-           console.error(error);
-           setMensagem("Não foi possível cadastrar")
+            console.error(error);
+            setMensagem(
+                "Não foi possível cadastrar o veterinário. Verifique os dados."
+            );
+        } finally {
+            setCarregando(false);
         }
     }
 
     return (
-       <main className="min-h-screen bg-gray-100 p-">
+       <main className="min-h-screen bg-gray-100 p-8">
 
         <div className="mx-auto max-w-3xl">
 
@@ -112,12 +165,47 @@ export default function Veterinarios() {
                         />
                     </div>
 
+                    {/* Clínica */}
+                        <div>
+                            <label className="mb-2 block font-medium text-gray-700">
+                                Clínica
+                            </label>
+
+                            <select
+                                value={clinicaId}
+                                onChange={(e) => setClinicaId(e.target.value)}
+                                required
+                                className="w-full rounded-lg border border-gray-300 p-3 text-gray-800 outline-none focus:border-teal-600"
+                            >
+                                <option value="">
+                                    Selecione uma clínica
+                                </option>
+
+                                {clinicas.map((clinica) => (
+                                    <option
+                                        key={clinica.id}
+                                        value={clinica.id}
+                                    >
+                                        {clinica.nome}
+                                    </option>
+                                ))}
+                            </select>
+
+                            {clinicas.length === 0 && (
+                                <p className="mt-2 text-sm text-gray-500">
+                                    Nenhuma clínica cadastrada ou disponível.
+                                    Cadastre uma clínica antes de continuar.
+                                </p>
+                            )}
+                        </div>
+
                     <button
-                    type="submit"
-                    className="w-full rounded-lg bg-teal-700 p-3 font-bold text-white transition hover:bg-teal-800 "
+                      type="submit"
+                      disabled={carregando || clinicas.length === 0}
+                      className="w-full rounded-lg bg-teal-700 p-3 font-bold text-white transition hover:bg-teal-800 disabled:opacity-50"
                     >
-                       Cadastrar Veterinário
-                    </button>
+                       {carregando ? "Cadastrando..." : "Cadastrar Veterinário"}
+                    </button> <br />
 
                 </form>
 
@@ -126,6 +214,13 @@ export default function Veterinarios() {
                     {mensagem}
                   </p>
                 )}
+
+                <Link
+                  href="/veterinarios/listar"
+                  className="rounded-lg bg-teal-600 px-6 py-3 text-white font-semibold hover:bg-teal-700"
+                >
+                   Gerenciar Veterinários
+                </Link>
 
             </div>
 
