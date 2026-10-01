@@ -55,7 +55,7 @@ export default function Pacientes() {
         };
 
         try {
-            const resposta = await fetch("http://localhost:8080/pacientes", {
+            const resposta = await fetch("https://api-clinica-veterinaria-4.onrender.com/pacientes", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

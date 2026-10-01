@@ -22,7 +22,7 @@ export default function Tutor() {
         };
 
         try {
-           const resposta = await fetch("http://localhost:8080/tutores", {
+           const resposta = await fetch("https://api-clinica-veterinaria-4.onrender.com/tutores", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

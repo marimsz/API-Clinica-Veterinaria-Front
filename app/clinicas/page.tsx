@@ -24,7 +24,7 @@ export default function Clinicas() {
             endereco,
         };
     try {
-        const resposta = await fetch("http://localhost:8080/clinicas", {
+        const resposta = await fetch("https://api-clinica-veterinaria-4.onrender.com/clinicas", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

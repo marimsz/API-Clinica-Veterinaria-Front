@@ -62,7 +62,7 @@ export default function Veterinarios() {
             }
         };
         try {
-            const resposta = await fetch("http://localhost:8080/veterinarios", {
+            const resposta = await fetch("https://api-clinica-veterinaria-4.onrender.com/veterinarios", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
