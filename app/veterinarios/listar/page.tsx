@@ -183,7 +183,7 @@ export default function ListarVeterinarios() {
 
     async function mostrarClinicas() {
         try {
-            const resposta = await fetch("http://localhost:8080/clinicas");
+            const resposta = await fetch("https://api-clinica-veterinaria-4.onrender.com/clinicas");
 
             if (!resposta.ok) {
                 throw new Error("Erro ao buscar clínicas");

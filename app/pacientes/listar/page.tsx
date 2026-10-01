@@ -32,7 +32,7 @@ export default function ListarPacientes() {
     const [raca, setRaca] = useState("");
     const [sexo, setSexo] = useState("");
 
-    const API = "http://localhost:8080/pacientes";
+    const API = "https://api-clinica-veterinaria-4.onrender.com/pacientes";
 
     // Listar todos os pacientes
     async function mostrarTodos() {

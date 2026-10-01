@@ -26,7 +26,7 @@ export default function ListarClinicas() {
     const [carregando, setCarregando] = useState(true);
     const[mensagem, setMensagem] = useState("");
 
-    const API = "http://localhost:8080/clinicas";
+    const API = "https://api-clinica-veterinaria-4.onrender.com/clinicas";
 
     async function carregarClinicas() {
         try {

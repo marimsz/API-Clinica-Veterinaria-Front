@@ -24,7 +24,7 @@ interface Tutor {
         const [telefone, setTelefone] = useState("");
         const [email, setEmail] = useState("");
     
-        const API = "http://localhost:8080/tutores";
+        const API = "https://api-clinica-veterinaria-4.onrender.com/tutores";
 
     async function mostrarTodos() {
         setCarregando(true);
