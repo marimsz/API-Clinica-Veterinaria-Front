@@ -135,7 +135,7 @@ async function modificarTutor(e: React.FormEvent<HTMLFormElement>) {
     };
 
     try {
-        const resposta = await fetch(`${API}/{tutorEditando.id}`, {
+        const resposta = await fetch(`${API}/${tutorEditando.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
