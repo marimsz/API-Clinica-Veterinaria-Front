@@ -24,7 +24,7 @@ export default function Veterinarios() {
         async function buscarClínicas() {
             try {
                 const resposta = await fetch(
-                    "http://localhost:8080/clinicas"
+                    "https://api-clinica-veterinaria-4.onrender.com/clinicas"
                 );
 
             if (!resposta.ok) {
