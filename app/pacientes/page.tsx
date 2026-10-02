@@ -23,7 +23,7 @@ export default function Pacientes() {
         async function carregarTutores() {
             try {
                 const resposta = await fetch(
-                    "http://localhost:8080/tutores"
+                    "https://api-clinica-veterinaria-4.onrender.com/tutores"
                 );
 
                 if (!resposta.ok) {
