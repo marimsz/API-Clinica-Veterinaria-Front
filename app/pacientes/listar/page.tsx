@@ -187,6 +187,13 @@ export default function ListarPacientes() {
         <div className="min-h-screen bg-gray-100 p-8">
             <div className="mx-auto max-w-6xl rounded-xl bg-white p-8 shadow-md">
 
+            <Link
+              href="/"
+              className="mb-6 inline-block font-semibold text-teal-700 hover:underline"
+            >
+              ← Voltar ao início
+            </Link>
+
                 {/* Título e botão Novo */}
                 <div className="mb-6 flex items-center justify-between">
                     <h1 className="text-3xl font-bold text-teal-700">
