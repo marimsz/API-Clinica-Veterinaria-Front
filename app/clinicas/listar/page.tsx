@@ -177,7 +177,7 @@ export default function ListarClinicas() {
      }
 
     return (
-        <main className="min-h-screen b-gray-100 p-8">
+        <main className="min-h-screen bg-white p-8">
            <div className="mx-auto max-w-6xl">
 
             <Link
