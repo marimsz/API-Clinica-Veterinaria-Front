@@ -260,7 +260,7 @@ export default function ListarClinicas() {
                         onChange={(e) => setNome(e.target.value)}
                         placeholder="Nome da clínica"
                         required
-                        className="rounded-lg border p-3"
+                        className="rounded-lg border p-3 text-gray-900"
                         />
 
                         <input 
@@ -268,7 +268,7 @@ export default function ListarClinicas() {
                         onChange={(e) => setCnpj(e.target.value)}
                         placeholder="Cnpj"
                         required
-                        className="rounded-lg border p-3"
+                        className="rounded-lg border p-3 text-gray-900"
                         />
 
                         <input 
@@ -276,7 +276,7 @@ export default function ListarClinicas() {
                         onChange={(e) => setTelefone(e.target.value)}
                         placeholder="Telefone"
                         required
-                        className="rounded-lg border p-3"
+                        className="rounded-lg border p-3 text-gray-900"
                         />
 
                         <input 
@@ -284,7 +284,7 @@ export default function ListarClinicas() {
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Email"
                         required
-                        className="rounded-lg border p-3"
+                        className="rounded-lg border p-3 text-gray-900"
                         />
 
                         <input 
@@ -292,7 +292,7 @@ export default function ListarClinicas() {
                         onChange={(e) => setEndereco(e.target.value)}
                         placeholder="Endereco"
                         required
-                        className="rounded-lg border p-3"
+                        className="rounded-lg border p-3 text-gray-900"
                         />
 
                         <button
