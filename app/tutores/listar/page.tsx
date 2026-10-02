@@ -263,11 +263,11 @@ return (
                     key={tutor.id}
                     className="border-b border-gray-200 text-gray-800 hover:bg-gray-50"
                     >
-                        <td className="p-3">{tutor.id}</td>
-                        <td className="p-3">{tutor.nome}</td>
-                        <td className="p-3">{tutor.cpf}</td>
-                        <td className="p-3">{tutor.telefone}</td>
-                        <td className="p-3">{tutor.email}</td>
+                        <td className="p-3 text-gray-900">{tutor.id}</td>
+                        <td className="p-3 text-gray-900">{tutor.nome}</td>
+                        <td className="p-3 text-gray-900">{tutor.cpf}</td>
+                        <td className="p-3 text-gray-900">{tutor.telefone}</td>
+                        <td className="p-3 text-gray-900">{tutor.email}</td>
 
                     <td className="p-3">
                     <div className="flex flex-wrap gap-2">

@@ -283,27 +283,27 @@ export default function ListarPacientes() {
                                         key={paciente.id}
                                         className="border-b border-gray-200 transition hover:bg-gray-50"
                                     >
-                                        <td className="p-3 text-gray-700">
+                                        <td className="p-3 text-gray-900">
                                             {paciente.id}
                                         </td>
 
-                                        <td className="p-3 text-gray-700">
+                                        <td className="p-3 text-gray-900">
                                             {paciente.nome}
                                         </td>
 
-                                        <td className="p-3 text-gray-700">
+                                        <td className="p-3 text-gray-900">
                                             {paciente.especie}
                                         </td>
 
-                                        <td className="p-3 text-gray-700">
+                                        <td className="p-3 text-gray-900">
                                             {paciente.raca}
                                         </td>
 
-                                        <td className="p-3 text-gray-700">
+                                        <td className="p-3 text-gray-900">
                                             {paciente.sexo}
                                         </td>
 
-                                        <td className="p-3 text-gray-700">
+                                        <td className="p-3 text-gray-900">
                                             {paciente.tutor?.nome ?? "Sem tutor"}
                                         </td>
 

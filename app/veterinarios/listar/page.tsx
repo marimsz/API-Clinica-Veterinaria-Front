@@ -302,23 +302,23 @@ export default function ListarVeterinarios() {
                                                 key={veterinario.id}
                                                 className="border-b border-gray-200 text-gray-800 hover:bg-gray-50"
                                             >
-                                                <td className="p-3">
+                                                <td className="p-3 text-gray-900">
                                                     {veterinario.id}
                                                 </td>
 
-                                                <td className="p-3">
+                                                <td className="p-3 text-gray-900">
                                                     {veterinario.nome}
                                                 </td>
 
-                                                <td className="p-3">
+                                                <td className="p-3 text-gray-900">
                                                     {veterinario.telefone}
                                                 </td>
 
-                                                <td className="p-3">
+                                                <td className="p-3 text-gray-900">
                                                     {veterinario.email}
                                                 </td>
 
-                                                <td className="p-3">
+                                                <td className="p-3 text-gray-900">
                                                  {veterinario.clinica?.nome ?? "Sem clínica"}
                                                 </td>
 
