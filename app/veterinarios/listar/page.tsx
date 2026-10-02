@@ -31,7 +31,7 @@ export default function ListarVeterinarios() {
     const [clinicas, setClinicas] = useState<Clinica[]>([]);
     const [clinicaId, setClinicaId] = useState("");
 
-    const API = "http://localhost:8080/veterinarios";
+    const API = "https://api-clinica-veterinaria-4.onrender.com/veterinarios";
 
     async function mostrarTodos() {
         setCarregando(true);
